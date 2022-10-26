@@ -1,6 +1,5 @@
 .create-post{
     display: flex;    
-    align-items: center;
 }
 .creation-part{
     width:50%;
@@ -10,13 +9,50 @@
 }
 .view-part{
     width:50%;
-    margin-top: 30px;
-    display: flex;
-    justify-content: center;
+    margin-top: 100px;
+}
+.view-part >*{
+    padding:10px 0;
 }
 .create-post-item{
     width:80%;
     margin:10px;
     padding:10px;
     margin-left:10%;
+}
+.tab-button{
+    background-color:purple;
+    border:1px solid white;
+    padding:10px;
+    color:white;
+    border-radius: 4px;
+    cursor:pointer;
+}
+.post-type-title{
+    background-color: red;
+    padding-left:10px;
+}
+.tag-suggestion{
+    position:absolute;
+    width:80%;  
+    margin-left: 10%;
+    height:auto;
+    background-color:white;
+    box-shadow: 0px 0px 5px 0px gray;
+}
+.tag-suggestion >*{
+    padding: 4px 14px;
+    border-bottom: 1px solid rgba(0,0,0,0.4);
+    cursor: pointer;
+}
+.tag-list{
+    display: flex;
+    gap:10px;
+}
+.tag-list >*{
+    border:1px solid black;
+    padding:4px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
 }
