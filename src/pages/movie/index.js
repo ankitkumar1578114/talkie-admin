@@ -6,7 +6,10 @@ import { useEffect, useState } from 'react';
 
 // const urlToFetch =process.env.backendURL+"/language/"
 const urlToFetch = `${BackendUrl}/movie/create/0`
-// const urlToFetch ="http://localhost:4000/movie/list/8243"
+
+const urlToFetchUpcomingMovies = "https://api.themoviedb.org/3/movie/upcoming?api_key=74ac704fd074ad2bbe8a579ac983f615&language=en-US&page=1"
+const urlToPostUpcomingMoviesInMyDatabase = `${BackendUrl}/movie/create/upcoming/0`;
+
 
 const Componenet = ()=> {
 
@@ -47,8 +50,39 @@ const Componenet = ()=> {
 
     }
 
+    const fetchUpcomingMovies = () =>{
+        fetch(urlToFetchUpcomingMovies,{
+            method : "GET",
+            mode:'cors',
+            header:{}
+        })
+        .then(res=>res.json()).
+        then(json=>{
+
+            console.log(json)
+
+            var bodyData = {
+                upcoming_movies:json.results
+            }
+
+            fetch(urlToPostUpcomingMoviesInMyDatabase,{
+                method : "POST",
+                mode: 'cors',
+                headers: { 'Content-Type': 'application/json' },
+                body:JSON.stringify(bodyData)
+            })
+            .then(res=>res.json())
+            .then(json=>{
+                console.log(json)
+                alert("Movies are saved")
+            }); 
+        
+        })
+    }
+
     return (
         <>
+        <input type ="button" onClick={fetchUpcomingMovies} value="Fetch Upcoming movies"/>
 
         <div className='create-post'>
             <div className='creation-part'>
